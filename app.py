@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import numpy as np
 import joblib
+import os
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
@@ -58,5 +59,6 @@ def api_generate_post():
         "sentiment": sentiment
     })
 
-if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=8080)
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 8080))
+    app.run(debug=True, host='0.0.0.0',port=port)
