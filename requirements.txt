@@ -1,0 +1,16 @@
+<<<<<<< HEAD
+Flask
+tensorflow
+joblib
+numpy
+=======
+tensorflow==2.18.0
+keras==3.5.0
+numpy==1.26.4
+scikit-learn==1.2.2
+seaborn==0.12.2
+matplotlib==3.7.5
+Pillow==11.1.0
+kagglehub==0.3.11
+ipython==7.34.0
+>>>>>>> c58b1a080046634b4a00734211994032850a53c6

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analisis Sentimen</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #1a1a1a;
+      padding: 40px 16px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: auto;
+      background-color: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: #444;
+    }
+
+    textarea {
+      width: 100%;
+      font-size: 1rem;
+      font-family: inherit;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fefefe;
+      resize: vertical;
+      min-height: 120px;
+      transition: border 0.2s;
+    }
+
+    textarea:focus {
+      border-color: #8b5cf6;
+      outline: none;
+      background-color: #fff;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #111827;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #374151;
+    }
+
+    .result {
+      margin-top: 32px;
+      padding: 20px;
+      background-color: #f3f4f6;
+      border-left: 4px solid #9ca3af;
+      border-radius: 8px;
+    }
+
+    .result p {
+      margin-bottom: 0.5rem;
+    }
+
+    .result strong {
+      color: #111827;
+    }
+
+    .result.positif {
+      border-left-color: #10b981;
+    }
+
+    .result.negatif {
+      border-left-color: #ef4444;
+    }
+
+    .result.netral {
+      border-left-color: #9ca3af;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Analisis Sentimen</h1>
+    <form method="POST">
+      <label for="text">Teks</label>
+      <textarea id="text" name="text" placeholder="Contoh: Layanan pelanggan sangat baik." required>{{ text_sample or '' }}</textarea>
+      <button type="submit" class="btn">Prediksi</button>
+    </form>
+
+    {% if sentiment %}
+    {% set sentiment_class = sentiment.lower() %}
+    <div class="result {{ sentiment_class }}">
+      <p><strong>Teks:</strong> {{ text_sample }}</p>
+      <p><strong>Prediksi Sentimen:</strong> {{ sentiment.capitalize() }}</p>
+    </div>
+    {% endif %}
+  </div>
+</body>
+
+</html>
