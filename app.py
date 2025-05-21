@@ -58,8 +58,5 @@ def api_generate_post():
         "sentiment": sentiment
     })
 
-# if __name__ == "__main__":
-#     app.run(host="0.0.0.0", port=8080)
-
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=8080)
