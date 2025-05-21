@@ -1,18 +1,20 @@
-# Gunakan image Python 3.10 sebagai base image
 FROM python:3.10-slim
 
-# Set working directory
+# Set work directory
 WORKDIR /app
 
-# Salin file requirements.txt dan install dependencies
+# Copy requirements.txt ke dalam container
 COPY requirements.txt /app/
+
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Salin seluruh aplikasi ke dalam container
+# Copy seluruh project ke dalam container
 COPY . /app/
 
-# Expose port 8080 (port default Cloud Run)
+# Expose port 8080 
 EXPOSE 8080
 
-# Jalankan aplikasi
-CMD ["python", "main.py"]
+# Perintah untuk menjalankan aplikasi
+CMD ["python", "app.py"]
+
